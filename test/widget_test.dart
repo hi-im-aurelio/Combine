@@ -1,30 +1,55 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
-
-import 'package:fdynamic_ui/main.dart';
-
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  const String cocString = """
+    Container
+      padding: EdgeInsets.all(16)
+      Center
+        child: Text
+          text: "Hello, Flutter"
+          style
+            color: #FF0000
+            fontSize: 18.0
+          overflow: ellipsis
+          maxLines: 1
+  """;
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+  Map<String, dynamic> result = parseCocString(cocString);
+  print(result);
+}
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+Map<String, dynamic> parseCocString(String cocString) {
+  List<String> lines = cocString.split('\n');
+  List<Map<String, dynamic>> stack = [{}];
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
-  });
+  for (String line in lines) {
+    line = line.trim();
+    if (line.isNotEmpty) {
+      List<String> parts = line.split(' ');
+      String widgetName = parts[0];
+
+      Map<String, dynamic> widgetProperties = {};
+      Map<String, dynamic> currentWidget = {widgetName: widgetProperties};
+      stack.last[widgetName] = currentWidget;
+
+      stack.add(widgetProperties);
+
+      for (int i = 1; i < parts.length; i++) {
+        List<String> prop = parts[i].split(':');
+        String propName = prop[0].trim();
+        String propValue = prop.sublist(1).join(':').trim();
+
+        if (propName[0].toUpperCase() == propName[0]) {
+          // Widget
+          Map<String, dynamic> nestedWidget = {propName: {}};
+          widgetProperties['child'] = nestedWidget;
+          currentWidget = nestedWidget;
+          stack.add(nestedWidget);
+        } else {
+          // Propriedade
+          widgetProperties[propName] = propValue;
+        }
+      }
+    }
+  }
+
+  return stack[0];
 }

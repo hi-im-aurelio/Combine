@@ -9,17 +9,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String fDynamicUI = """
-      Container
-        padding: EdgeInsets.all(16)
-        Center
-          Text
-            text: DynamicUI
-            textAlign: center
-            style
-              color: #FF0000
-              fontSize: 18.0
-            overflow: ellipsis
-            maxLines: 1
+    Container
+      padding: EdgeInsets.all(16)
+      Center
+        Text
+          text: "Hello, Flutter"
+          style
+            color: #FF0000
+            fontSize: 18.0
+          overflow: ellipsis
+          maxLines: 1
     """;
 
     return MaterialApp(
