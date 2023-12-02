@@ -3,24 +3,59 @@ import 'package:flutter/material.dart';
 import '../logics/parse_proprerties.dart';
 
 Widget buildText(Iterator<String> iterator) {
-  // print(iterator.current.trim());
   Map proprerties = extractProperties(iterator);
-  print("Propriedades do Text: " + proprerties.toString());
 
   return Text(
-    'Static Text',
-    // textAlign: properties.containsKey('textAlign') ? parseTextAlign(properties['textAlign']) : null,
-    // style: properties.containsKey('style') ? parseTextStyle(properties['style']) : null,
-    // overflow: properties.containsKey('overflow') ? parseTextOverflow(properties['overflow']) : null,
-    // maxLines: properties.containsKey('maxLines') ? parseInt(properties['maxLines']) : null,
+    proprerties['text'],
+    style: TextStyle(
+      inherit: proprerties.containsKey('inherit') ? parseBool(proprerties['inherit']) : true,
+      color: proprerties.containsKey('color') ? parseColor(proprerties['color']) : null,
+      // Color? backgroundColor,
+      fontSize: proprerties.containsKey('fontSize') ? parseDouble(proprerties['fontSize']) : null,
+      // FontWeight? fontWeight,
+      // FontStyle? fontStyle,
+      // double? letterSpacing,
+      // double? wordSpacing,
+      // TextBaseline? textBaseline,
+      // double? height,
+      // TextLeadingDistribution? leadingDistribution,
+      // Locale? locale,
+      // Paint? foreground,
+      // Paint? background,
+      // List<Shadow>? shadows,
+      // List<FontFeature>? fontFeatures,
+      // List<FontVariation>? fontVariations,
+      // TextDecoration? decoration,
+      // Color? decorationColor,
+      // TextDecorationStyle? decorationStyle,
+      // double? decorationThickness,
+      // String? debugLabel,
+      // String? fontFamily,
+      // List<String>? fontFamilyFallback,
+      // String? package,
+      overflow: proprerties.containsKey('overflow') ? parseTextOverflow(proprerties['overflow']) : null,
+    ),
+    textAlign: proprerties.containsKey('textAlign') ? parseTextAlign(proprerties['textAlign']) : null,
+    overflow: proprerties.containsKey('overflow') ? parseTextOverflow(proprerties['overflow']) : null,
+    maxLines: proprerties.containsKey('maxLines') ? parseInt(proprerties['maxLines']) : null,
   );
+}
+
+bool parseBool(String value) {
+  switch (value) {
+    case 'true':
+      return true;
+    case 'false':
+      return false;
+  }
+
+  return false;
 }
 
 Color parseColor(String color) {
   try {
     return Color(int.parse(color, radix: 16) | 0xFF000000);
   } catch (e) {
-    print('Erro ao converter cor: $e');
     return Colors.black87;
   }
 }
@@ -29,7 +64,6 @@ double parseDouble(String value) {
   try {
     return double.parse(value);
   } catch (e) {
-    print('Erro ao converter double: $e');
     return 14;
   }
 }
@@ -38,7 +72,6 @@ int parseInt(String value) {
   try {
     return int.parse(value);
   } catch (e) {
-    print('Erro ao converter inteiro: $e');
     return 1;
   }
 }

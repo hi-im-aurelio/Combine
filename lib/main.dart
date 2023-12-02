@@ -17,9 +17,10 @@ class MyApp extends StatelessWidget {
       Center
         break
         Text
-          text: "Hello, Flutter"
-          overflow: ellipsis
-          maxLines: 1
+          text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, nostrum. Provident voluptatem rem magni impedit dicta ex, obcaecati placeat fugiat quas doloribus et deleniti cumque soluta, totam molestias! Iure, totam?
+          textAlign: center
+          fontSize: 24
+          inherit: true
           break
 """;
 
