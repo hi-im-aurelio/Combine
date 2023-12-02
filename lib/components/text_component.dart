@@ -3,15 +3,12 @@ import 'package:flutter/material.dart';
 import '../logics/parse_proprerties.dart';
 
 Widget buildText(Iterator<String> iterator) {
-  if (!iterator.moveNext()) return const SizedBox.shrink();
-
-  var line = iterator.current.trim();
-  var properties = parseProperties(line);
-
-  print(properties);
+  // print(iterator.current.trim());
+  Map proprerties = extractProperties(iterator);
+  print("Propriedades do Text: " + proprerties.toString());
 
   return Text(
-    properties['text'] ?? '',
+    'Static Text',
     // textAlign: properties.containsKey('textAlign') ? parseTextAlign(properties['textAlign']) : null,
     // style: properties.containsKey('style') ? parseTextStyle(properties['style']) : null,
     // overflow: properties.containsKey('overflow') ? parseTextOverflow(properties['overflow']) : null,

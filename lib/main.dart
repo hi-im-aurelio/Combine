@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'builder.dart';
 
 void main() => runApp(const MyApp());
@@ -11,15 +12,16 @@ class MyApp extends StatelessWidget {
     String fDynamicUI = """
     Container
       padding: EdgeInsets.all(16)
+      color: #FF0000
+      break
       Center
+        break
         Text
           text: "Hello, Flutter"
-          style
-            color: #FF0000
-            fontSize: 18.0
           overflow: ellipsis
           maxLines: 1
-    """;
+          break
+""";
 
     return MaterialApp(
       theme: ThemeData(useMaterial3: true),

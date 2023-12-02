@@ -1,3 +1,27 @@
+Map<String, dynamic> extractProperties(Iterator<String> iterator) {
+  if (!iterator.moveNext()) return {};
+
+  Map<String, dynamic> properties = {};
+  var line = iterator.current.trim();
+
+  while (line.isEmpty || line.startsWith('//')) {
+    line = iterator.current.trim();
+  }
+
+  while (line[0] == line[0].toLowerCase()) {
+    properties.addAll(parseProperties(line));
+
+    if (line == 'break') break;
+    if (!iterator.moveNext()) {
+      break;
+    }
+    line = iterator.current.trim();
+    // break;
+  }
+
+  return properties;
+}
+
 Map<String, dynamic> parseProperties(String line) {
   var properties = <String, dynamic>{};
 
@@ -9,41 +33,8 @@ Map<String, dynamic> parseProperties(String line) {
     var value = match.group(2)?.trim();
 
     if (key != null && value != null) {
-      // Verificar se a propriedade é aninhada
-      if (key.contains('.')) {
-        var keys = key.split('.');
-        var nestedMap = properties;
-
-        // Criar estrutura aninhada
-        for (var i = 0; i < keys.length - 1; i++) {
-          if (!nestedMap.containsKey(keys[i])) {
-            nestedMap[keys[i]] = <String, dynamic>{};
-          }
-          nestedMap = nestedMap[keys[i]];
-        }
-
-        // Atribuir o valor à propriedade aninhada
-        var lastKey = keys.last;
-        if (!nestedMap.containsKey(lastKey)) {
-          nestedMap[lastKey] = value;
-        } else if (nestedMap[lastKey] is Map) {
-          // Mesclar se já existir uma estrutura aninhada com a mesma chave
-          var nestedValue = nestedMap[lastKey] as Map<String, dynamic>;
-          var nestedProperties = parseProperties(value);
-          nestedValue.addAll(nestedProperties);
-        }
-      } else {
-        // Adicionar diretamente as propriedades não aninhadas
-        properties[key] = value;
-
-        // Se a propriedade for 'style', também analisar as propriedades aninhadas
-        if (key == 'style') {
-          properties[key] = parseProperties(value);
-        }
-      }
+      properties[key] = value;
     }
   }
-
-  print(properties);
   return properties;
 }
