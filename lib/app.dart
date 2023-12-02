@@ -8,10 +8,15 @@ String app = """
         title: AppDemo
         centerTitle: false
         break
-        Center
+        Column
+          length: 2
           break
           Text
-            text: Flutter UI.
+            text: Flutter UI
+            textAlign: center
+            break
+          Text
+            text: Dynamic UI
             textAlign: center
             break
 """;

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../components/center_component.dart';
+import '../components/column_component.dart';
 import '../components/container_component.dart';
 import '../components/material_app_component.dart';
 import '../components/scaffold_component.dart';
@@ -28,6 +29,8 @@ Widget buildComponent(Iterator<String> iterator) {
         return buildCenter(iterator);
       case 'Text':
         return buildText(iterator);
+      case 'Column':
+        return buildColumn(iterator);
     }
   }
 
