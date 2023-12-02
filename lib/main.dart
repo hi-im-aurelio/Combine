@@ -10,10 +10,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String fDynamicUI = """
-    Text
-      text: Lorem ipsum dolor sit amet consectetur adipisicing elit, and definition.
-      textAlign: center
+    Center
       break
+      Container
+        color: deepPurpleAccent
+        height: 100
+        width: 100
+        break
+        Text
+          text: Lorem ipsum dolor sit amet consectetur adipisicing elit, and definition.
+          textAlign: center
+          break
 """;
 
     return MaterialApp(
@@ -29,4 +36,10 @@ class MyDynamicUIApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Scaffold(body: builder(string));
+  // @override
+  // Widget build(BuildContext context) {
+  //   return Scaffold(
+  //     appBar: AppBar(),
+  //   );
+  // }
 }
