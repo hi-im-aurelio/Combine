@@ -4,19 +4,22 @@ Map<String, dynamic> extractProperties(Iterator<String> iterator) {
   Map<String, dynamic> properties = {};
   var line = iterator.current.trim();
 
+  // Identifica linhas comentadas ou, vazias.
   while (line.isEmpty || line.startsWith('//')) {
-    line = iterator.current.trim();
+    iterator.moveNext();
+    break;
   }
 
   while (line[0] == line[0].toLowerCase()) {
     properties.addAll(parseProperties(line));
 
-    if (line == 'break') break;
-    if (!iterator.moveNext()) {
+    if (line == 'break') {
       break;
+    } else {
+      iterator.moveNext();
     }
+
     line = iterator.current.trim();
-    // break;
   }
 
   return properties;

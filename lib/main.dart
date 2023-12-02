@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String fDynamicUI = """
-    Container
+    Container 
       padding: EdgeInsets.all(16)
       color: #FF0000
       break
