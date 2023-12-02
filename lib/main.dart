@@ -10,18 +10,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String fDynamicUI = """
-    Container 
-      padding: EdgeInsets.all(16)
-      color: #FF0000
+    Text
+      text: Lorem ipsum dolor sit amet consectetur adipisicing elit, and definition.
+      textAlign: center
       break
-      Center
-        break
-        Text
-          text: Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, nostrum. Provident voluptatem rem magni impedit dicta ex, obcaecati placeat fugiat quas doloribus et deleniti cumque soluta, totam molestias! Iure, totam?
-          textAlign: center
-          fontSize: 24
-          inherit: true
-          break
 """;
 
     return MaterialApp(

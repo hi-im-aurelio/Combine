@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../logics/parse_proprerties.dart';
+import 'default_components.dart';
 
 Widget buildText(Iterator<String> iterator) {
   Map proprerties = extractProperties(iterator);
@@ -41,41 +42,6 @@ Widget buildText(Iterator<String> iterator) {
   );
 }
 
-bool parseBool(String value) {
-  switch (value) {
-    case 'true':
-      return true;
-    case 'false':
-      return false;
-  }
-
-  return false;
-}
-
-Color parseColor(String color) {
-  try {
-    return Color(int.parse(color, radix: 16) | 0xFF000000);
-  } catch (e) {
-    return Colors.black87;
-  }
-}
-
-double parseDouble(String value) {
-  try {
-    return double.parse(value);
-  } catch (e) {
-    return 14;
-  }
-}
-
-int parseInt(String value) {
-  try {
-    return int.parse(value);
-  } catch (e) {
-    return 1;
-  }
-}
-
 TextOverflow parseTextOverflow(String overflow) {
   switch (overflow.toLowerCase()) {
     case 'clip':
@@ -87,13 +53,6 @@ TextOverflow parseTextOverflow(String overflow) {
     default:
       return TextOverflow.clip;
   }
-}
-
-TextStyle parseTextStyle(Map<String, dynamic> properties) {
-  return TextStyle(
-    color: parseColor(properties['color']),
-    fontSize: parseDouble(properties['fontSize']),
-  );
 }
 
 TextAlign parseTextAlign(String textAlign) {
