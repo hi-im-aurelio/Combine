@@ -12,7 +12,10 @@ MaterialApp buildMaterialApp(Iterator<String> iterator) {
   var color = properties.containsKey('color') ? parseColor(properties['color']) : null;
   var useMaterial3 = properties.containsKey('useMaterial3') ? parseBool(properties['useMaterial3']) : true;
 
+  var debugShowCheckedModeBanner = properties.containsKey('debugShowCheckedModeBanner') ? parseBool(properties['debugShowCheckedModeBanner']) : true;
+
   return MaterialApp(
+    debugShowCheckedModeBanner: debugShowCheckedModeBanner,
     title: title,
     theme: !enableTheme
         ? null

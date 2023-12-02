@@ -1,13 +1,17 @@
 String app = """
-    Center
+    MaterialApp
+      debugShowCheckedModeBanner: false
+      useMaterial3: false
       break
-      Container
-        color: deepPurpleAccent
-        height: 100
-        width: 100
+      Scaffold
+        enableAppBar: true
+        title: AppDemo
+        centerTitle: false
         break
-        Text
-          text: Lorem ipsum dolor sit amet consectetur adipisicing elit, and definition.
-          textAlign: center
+        Center
           break
+          Text
+            text: Flutter UI.
+            textAlign: center
+            break
 """;

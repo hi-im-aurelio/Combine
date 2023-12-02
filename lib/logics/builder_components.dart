@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../components/center_component.dart';
 import '../components/container_component.dart';
+import '../components/material_app_component.dart';
+import '../components/scaffold_component.dart';
 import '../components/sizedbox_component.dart';
 import '../components/text_component.dart';
 
@@ -14,6 +16,10 @@ String extractComponent(Iterator<String> iterator) {
 Widget buildComponent(Iterator<String> iterator) {
   while (iterator.moveNext()) {
     switch (extractComponent(iterator)) {
+      case 'MaterialApp':
+        return buildMaterialApp(iterator);
+      case 'Scaffold':
+        return buildScaffold(iterator);
       case 'Container':
         return buildContainer(iterator);
       case 'SizedBox':
