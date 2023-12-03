@@ -1,72 +1,79 @@
-# Flutter Dynamic UI
+# Attention. This is not an official package yet. Still in the development and testing phase.
+# Floating dynamic UI
 
-O **Flutter Dynamic UI** é um projeto inovador que visa facilitar a atualização da interface do usuário em aplicações Flutter de uma maneira simples e eficiente, inspirado no conceito de "code push". O projeto permite a definição da interface do usuário através de uma string formatada chamada "coc string", proporcionando flexibilidade e facilidade na manutenção e atualização da UI.
+**Flutter Dynamic UI** aims to make it easier to update the user interface in Flutter applications in a simple and efficient way, inspired by the concept of "code push".
 
-## Estrutura da Linguagem
+The project allows the definition of the user interface through a formatted string called “coc string”, providing flexibility and ease in maintaining and updating the UI.
 
-A linguagem utiliza uma abordagem baseada em strings formatadas, denominadas "coc strings", para representar a hierarquia de componentes e suas propriedades. Cada componente é definido com suas propriedades em um formato legível, seguido pela palavra-chave "break" para indicar o término desse bloco específico.
+## Language structure
 
-Exemplo de "coc string":
+The language uses an approach based on formatted strings, called "coc strings", to represent the hierarchy of components and their properties. Each component is defined with its properties in a readable format, followed by the “break” keyword to indicate the end of that specific block.
 
-```dart
-String app = """
-    Center
-      break
-      Container
-        color: deepPurpleAccent
-        height: 100
-        width: 100
-        break
-        Text
-          text: Lorem ipsum dolor sit amet consectetur adipisicing elit, and definition.
-          textAlign: center
-          break
+Example of "string coc":
+
+```javelin
+String application = """
+       center
+         to break
+         Container
+           color: deepPurpleAccent
+           height: 100
+           width: 100
+           to break
+           Text
+             text: Lorem ipsum dolor sit amet consectetur adipisicing elit and definition.
+             textAlign: center
+             to break
 """;
 ```
 
-## Parser e Builder
+## Parser and Builder
 
-O projeto inclui um conjunto de funções de parse e um builder que interpreta a "coc string" para criar a hierarquia de widgets correspondente. O parse é realizado por meio de um conjunto de lógicas que reconhecem componentes e propriedades, enquanto o builder traduz essas informações em widgets Flutter.
+The project includes a set of parsing functions and a constructor that interprets the "coc string" to create the corresponding widget hierarchy. Analysis is performed through a set of logic that recognizes components and properties, while the builder translates this information into Flutter widgets.
 
-## Componentes Suportados
+## Supported Components
 
-Atualmente, o projeto suporta os seguintes componentes:
+Currently, the project supports the following components:
 
+- `MaterialApp`
+- `Scaffolding`
+- `AppBar`
+- `Column`
 - `Container`
 - `SizedBox`
 - `Center`
 - `Text`
 
-Cada componente possui um conjunto de propriedades específicas que podem ser configuradas na "coc string".
+Each component has a set of specific properties that can be configured in the "coc string".
 
-## Exemplo de Uso
+## Example of use
 
-Você pode integrar o **Flutter Dynamic UI** em seu projeto da seguinte maneira:
+You can integrate **Flutter Dynamic UI** into your project as follows:
 
-1. Adicione a `coc string` em um arquivo, por exemplo, `app.flutter`:
+1. Add the `string coc` to a file, for example `app.flutter`:
 
 ```
 MaterialApp
-    break
-    Scaffold
-          title: App Demo
-          break
-          Center
-               break
-                Text
-                     break
-                      text: I, Flutter
-                      break
+       to break
+       Scaffolding
+             title: Application demo
+             to break
+             center
+                  to break
+                   Text
+                        to break
+                         text: I, Flutter
+                         to break
 ```
 
-2. Importe a "coc string" no `main.dart` e utilize o builder para criar a interface:
+2. Import the "coc string" into `main.dart` and use the constructor to create the interface:
 
-```dart
+```javelin
 void main() => runApp(builder(string));
 ```
 
-Essa abordagem permite uma clara separação entre a definição da interface e a lógica Dart, proporcionando flexibilidade para atualizações remotas.
+This approach allows for a clear separation between interface definition and Dart logic, providing flexibility for remote updates.
 
-## Contribuição
+## Contribution
 
-Contribuições são bem-vindas! Sinta-se à vontade para abrir problemas (issues) e enviar pull requests para tornar o **Flutter Dynamic UI** ainda mais robusto e versátil.
+Contributions are welcome! Feel free to open issues and submit pull requests to make **Flutter Dynamic UI** even more robust and versatile.
