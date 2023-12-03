@@ -11,7 +11,7 @@ The language uses an approach based on formatted strings, called "coc strings", 
 
 Example of "string coc":
 
-```javelin
+```dart
 String application = """
        center
          to break
@@ -52,7 +52,7 @@ You can integrate **Flutter Dynamic UI** into your project as follows:
 
 1. Add the `string coc` to a file, for example `app.flutter`:
 
-```
+```dart
 MaterialApp
        to break
        Scaffolding
@@ -68,7 +68,7 @@ MaterialApp
 
 2. Import the "coc string" into `main.dart` and use the constructor to create the interface:
 
-```javelin
+```dart
 void main() => runApp(builder(string));
 ```
 
