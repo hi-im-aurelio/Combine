@@ -13,17 +13,17 @@ Example of "string coc":
 
 ```dart
 String application = """
-       center
-         to break
+       Center
+         break
          Container
            color: deepPurpleAccent
            height: 100
            width: 100
-           to break
+           break
            Text
              text: Lorem ipsum dolor sit amet consectetur adipisicing elit and definition.
              textAlign: center
-             to break
+             break
 """;
 ```
 
@@ -54,16 +54,25 @@ You can integrate **Flutter Dynamic UI** into your project as follows:
 
 ```dart
 MaterialApp
-       to break
-       Scaffolding
-             title: Application demo
-             to break
-             center
-                  to break
-                   Text
-                        to break
-                         text: I, Flutter
-                         to break
+  debugShowCheckedModeBanner: false
+  useMaterial3: false
+  break
+  Scaffold
+    enableAppBar: true
+    title: AppDemo
+    centerTitle: false
+    break
+    Column
+      length: 2
+      break
+      Text
+        text: First text
+        textAlign: center
+        break
+      Text
+        text: Second text
+        textAlign: center
+        break
 ```
 
 2. Import the "coc string" into `main.dart` and use the constructor to create the interface:
